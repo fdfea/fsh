@@ -10,7 +10,7 @@ To compile fsh simply run `make` from the root directory and run the program usi
 
 Below is an example terminal session using `fsh`:
 
-<img src="images/fsh-example.PNG" height="450">
+<img src="images/fsh-example.PNG" height="375">
 
 ### **Credits**
 
