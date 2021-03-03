@@ -54,7 +54,7 @@ static int parse_and_run_chain(const string &chain)
     if (first_and != string::npos && first_and < chain.find_first_not_of("& \t\n\r\f\v"))
     {
         status = EUSR;
-        print_err("Invalid command, and at beginning", status);
+        print_err("Invalid command, ampersand at beginning", status);
         return status;
     }
 
@@ -62,7 +62,7 @@ static int parse_and_run_chain(const string &chain)
     if (last_and != string::npos && last_and > chain.find_last_not_of("& \t\n\r\f\v"))
     {
         status = EUSR;
-        print_err("Invalid command, and at end", status);
+        print_err("Invalid command, ampersand at end", status);
         return status;
     }
     
@@ -74,11 +74,11 @@ static int parse_and_run_chain(const string &chain)
     while ((pos = chain.find(" & ", last)) != string::npos)
     {
         pipeline = chain.substr(last, pos-last);
-        //empty string and pipe is invalid
+        //empty string between ampersands is invalid
         if (pipeline.find_first_not_of(" \t\n\r\f\v") == string::npos)
         {
             status = EUSR;
-            print_err("Invalid command, invalid or empty and", status);
+            print_err("Invalid command, invalid or empty ampersand", status);
             return status;
         }
         pipelines.push_back(pipeline);
@@ -88,7 +88,7 @@ static int parse_and_run_chain(const string &chain)
     if (pipeline.find_first_not_of(" \t\n\r\f\v") == string::npos)
     {
         status = EUSR;
-        print_err("Invalid command, invalid or empty and", status);
+        print_err("Invalid command, invalid or empty ampersand", status);
         return status;
     }
     pipelines.push_back(pipeline);
